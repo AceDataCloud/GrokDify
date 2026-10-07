@@ -1,0 +1,441 @@
+identity:
+  name: grok_chat_completions
+  author: acedatacloud
+  label:
+    en_US: Grok Video Chat Completions
+    zh_Hans: Grok Video 对话生成
+description:
+  human:
+    en_US: Chat Completions through the Ace Data Cloud Grok Video API.
+    zh_Hans: 通过 Ace Data Cloud Grok Video API 执行 Chat Completions。
+  llm: Chat Completions through the Ace Data Cloud Grok Video API. For asynchronous
+    results, preserve task_id and use the task retrieval tool until completion. A
+    successful submission is not completed output.
+parameters:
+- name: n
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: N
+    zh_Hans: 图片数量
+  human_description:
+    en_US: Set n for this operation.
+    zh_Hans: 为每条输入消息生成多少个对话补全选项。
+  llm_description: Set n for this operation.
+  min: 1
+  max: 128
+- name: model
+  type: select
+  required: true
+  form: form
+  label:
+    en_US: Model
+    zh_Hans: 模型
+  human_description:
+    en_US: Select a model currently supported by this API. Availability and pricing
+      depend on the chosen model.
+    zh_Hans: 要使用的模型 ID。
+  llm_description: Select a model currently supported by this API. Availability and
+    pricing depend on the chosen model.
+  options:
+  - value: grok-4.7
+    label:
+      en_US: grok-4.7
+      zh_Hans: grok-4.7
+  - value: grok-4.5
+    label:
+      en_US: grok-4.5
+      zh_Hans: grok-4.5
+  - value: grok-4
+    label:
+      en_US: grok-4
+      zh_Hans: grok-4
+  - value: grok-3
+    label:
+      en_US: grok-3
+      zh_Hans: grok-3
+- name: messages
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Messages
+    zh_Hans: 消息列表
+  human_description:
+    en_US: Set messages for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 构成当前对话的消息列表。 数组或对象请使用 JSON 格式。
+  llm_description: Set messages for this operation. Enter a JSON array or object where
+    applicable.
+- name: max_tokens
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Max Tokens
+    zh_Hans: max tokens
+  human_description:
+    en_US: Set max tokens for this operation.
+    zh_Hans: 对话补全中可生成的最大 token 数量。
+  llm_description: Set max tokens for this operation.
+- name: temperature
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Temperature
+    zh_Hans: 温度
+  human_description:
+    en_US: Set temperature for this operation.
+    zh_Hans: 使用的采样温度，取值在 0 到 2 之间。较高的值（如 0.8）会使输出更随机，较低的值（如 0.2）会使输出更聚焦、更确定。
+  llm_description: Set temperature for this operation.
+  min: 0
+  max: 2
+- name: top_p
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Top P
+    zh_Hans: Top P
+  human_description:
+    en_US: Set top p for this operation.
+    zh_Hans: 温度采样的一种替代方法，称为核采样（nucleus sampling），模型仅考虑累计概率质量达到 top_p 的那部分 token。例如
+      0.1 表示只考虑累计概率质量前 10% 的 token。通常建议只调整该参数或 `temperature` 之一，而非同时调整两者。
+  llm_description: Set top p for this operation.
+  min: 0
+  max: 1
+- name: frequency_penalty
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Frequency Penalty
+    zh_Hans: frequency penalty
+  human_description:
+    en_US: Set frequency penalty for this operation.
+    zh_Hans: 取值在 -2.0 到 2.0 之间。正值会根据 token 在已生成文本中出现的频率进行惩罚，从而降低模型逐字重复同一行的可能性。
+  llm_description: Set frequency penalty for this operation.
+  min: -2
+  max: 2
+- name: presence_penalty
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Presence Penalty
+    zh_Hans: presence penalty
+  human_description:
+    en_US: Set presence penalty for this operation.
+    zh_Hans: 取值在 -2.0 到 2.0 之间。正值会根据 token 是否已在已生成文本中出现进行惩罚，从而提高模型谈论新话题的可能性。
+  llm_description: Set presence penalty for this operation.
+  min: -2
+  max: 2
+- name: seed
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Seed
+    zh_Hans: 随机种子
+  human_description:
+    en_US: Set seed for this operation.
+    zh_Hans: 若指定，系统将尽力进行确定性采样，使得使用相同 `seed` 和参数的重复请求返回相同结果。确定性无法保证；请参考响应中的 `system_fingerprint`
+      来监控后端变更。
+  llm_description: Set seed for this operation.
+- name: stop
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Stop
+    zh_Hans: stop
+  human_description:
+    en_US: Set stop for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 最多 4 个序列，API 在生成到这些序列时将停止继续生成。返回的文本不包含停止序列。 数组或对象请使用 JSON 格式。
+  llm_description: Set stop for this operation. Enter a JSON array or object where
+    applicable.
+- name: max_completion_tokens
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Max Completion Tokens
+    zh_Hans: max completion tokens
+  human_description:
+    en_US: Set max completion tokens for this operation.
+    zh_Hans: 可为一次补全生成的 token 数量上限，包括可见输出 token 和推理 token。对于较新的模型（o1/o3/o4/gpt-5 系列及其他推理模型），该参数取代
+      `max_tokens`。
+  llm_description: Set max completion tokens for this operation.
+- name: logprobs
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Logprobs
+    zh_Hans: logprobs
+  human_description:
+    en_US: Set logprobs for this operation.
+    zh_Hans: 是否返回输出 token 的对数概率。若为 true，将返回 `message` 的 `content` 中每个输出 token 的对数概率。
+  llm_description: Set logprobs for this operation.
+- name: top_logprobs
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Top Logprobs
+    zh_Hans: top logprobs
+  human_description:
+    en_US: Set top logprobs for this operation.
+    zh_Hans: 取值为 0 到 20 之间的整数，指定在每个 token 位置返回的最可能 token 的数量，每个都附带对应的对数概率。使用该参数时，`logprobs`
+      必须设置为 `true`。
+  llm_description: Set top logprobs for this operation.
+  min: 0
+  max: 20
+- name: stream_options
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Stream Options
+    zh_Hans: stream options
+  human_description:
+    en_US: Set stream options for this operation. Enter a JSON array or object where
+      applicable.
+    zh_Hans: '流式响应的选项。仅在设置 `stream: true` 时使用。 数组或对象请使用 JSON 格式。'
+  llm_description: Set stream options for this operation. Enter a JSON array or object
+    where applicable.
+- name: parallel_tool_calls
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Parallel Tool Calls
+    zh_Hans: parallel tool calls
+  human_description:
+    en_US: Set parallel tool calls for this operation.
+    zh_Hans: 是否在工具调用期间启用并行函数调用。
+  llm_description: Set parallel tool calls for this operation.
+- name: user
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: User
+    zh_Hans: user
+  human_description:
+    en_US: Set user for this operation.
+    zh_Hans: 代表你的终端用户的唯一标识符，可帮助平台监控并检测滥用行为。
+  llm_description: Set user for this operation.
+- name: reasoning_effort
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Reasoning Effort
+    zh_Hans: reasoning effort
+  human_description:
+    en_US: Set reasoning effort for this operation.
+    zh_Hans: 约束推理模型（o1/o3/o4/gpt-5 系列）的推理投入程度。当前支持 `minimal`、`low`、`medium` 和 `high`。降低推理投入可带来更快的响应，并减少响应中用于推理的
+      token 数量。
+  llm_description: Set reasoning effort for this operation.
+  options:
+  - value: minimal
+    label:
+      en_US: minimal
+      zh_Hans: minimal
+  - value: low
+    label:
+      en_US: low
+      zh_Hans: low
+  - value: medium
+    label:
+      en_US: medium
+      zh_Hans: medium
+  - value: high
+    label:
+      en_US: high
+      zh_Hans: high
+- name: service_tier
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Service Tier
+    zh_Hans: service tier
+  human_description:
+    en_US: Set service tier for this operation.
+    zh_Hans: 指定服务请求所用的处理类型。设置为 `auto` 让平台自动选择，`default` 为标准定价/性能，`flex` 为更慢但更便宜的 Flex
+      处理层，`priority` 为受支持模型上最快的处理层。
+  llm_description: Set service tier for this operation.
+  options:
+  - value: auto
+    label:
+      en_US: auto
+      zh_Hans: auto
+  - value: default
+    label:
+      en_US: default
+      zh_Hans: default
+  - value: flex
+    label:
+      en_US: flex
+      zh_Hans: flex
+  - value: scale
+    label:
+      en_US: scale
+      zh_Hans: scale
+  - value: priority
+    label:
+      en_US: priority
+      zh_Hans: priority
+- name: store
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Store
+    zh_Hans: store
+  human_description:
+    en_US: Set store for this operation.
+    zh_Hans: 是否存储本次对话补全请求的输出，以用于模型蒸馏或评测产品。
+  llm_description: Set store for this operation.
+- name: metadata
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Metadata
+    zh_Hans: metadata
+  human_description:
+    en_US: Set metadata for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 可附加到对象上的一组键值对，最多 16 对。可用于以结构化格式存储对象的附加信息。键为最长 64 个字符的字符串，值为最长 512 个字符的字符串。
+      数组或对象请使用 JSON 格式。
+  llm_description: Set metadata for this operation. Enter a JSON array or object where
+    applicable.
+- name: logit_bias
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Logit Bias
+    zh_Hans: logit bias
+  human_description:
+    en_US: Set logit bias for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 修改指定 token 在补全中出现的可能性。接受一个 JSON 对象，将 token（由其在分词器中的 token ID 指定）映射到 -100
+      到 100 之间的偏置值。 数组或对象请使用 JSON 格式。
+  llm_description: Set logit bias for this operation. Enter a JSON array or object
+    where applicable.
+- name: modalities
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Modalities
+    zh_Hans: modalities
+  human_description:
+    en_US: Set modalities for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 你希望模型生成的输出类型。大多数模型默认为 `["text"]`。`gpt-4o-audio-preview` 模型还可用于生成音频。若希望模型同时生成文本和音频响应，可使用
+      `["text", "audio"]`。 数组或对象请使用 JSON 格式。
+  llm_description: Set modalities for this operation. Enter a JSON array or object
+    where applicable.
+- name: audio
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Audio
+    zh_Hans: 生成音频
+  human_description:
+    en_US: Set audio for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: '音频输出参数。当通过 `modalities: ["audio"]` 请求音频输出时必填。 数组或对象请使用 JSON 格式。'
+  llm_description: Set audio for this operation. Enter a JSON array or object where
+    applicable.
+- name: prediction
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Prediction
+    zh_Hans: prediction
+  human_description:
+    en_US: Set prediction for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 静态预测输出内容，例如正在重新生成的文本文件的内容。当大部分响应内容已提前可知时，可用于缩短响应时间。 数组或对象请使用 JSON 格式。
+  llm_description: Set prediction for this operation. Enter a JSON array or object
+    where applicable.
+- name: web_search_options
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Web Search Options
+    zh_Hans: web search options
+  human_description:
+    en_US: Set web search options for this operation. Enter a JSON array or object
+      where applicable.
+    zh_Hans: 网络搜索工具的选项，供带内置搜索的 GPT-4o 模型使用（`gpt-4o-search-preview`、`gpt-4o-mini-search-preview`）。
+      数组或对象请使用 JSON 格式。
+  llm_description: Set web search options for this operation. Enter a JSON array or
+    object where applicable.
+- name: tools
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Tools
+    zh_Hans: 辅助工具
+  human_description:
+    en_US: Set tools for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 模型可调用的工具列表。目前仅支持函数（function）作为工具。 数组或对象请使用 JSON 格式。
+  llm_description: Set tools for this operation. Enter a JSON array or object where
+    applicable.
+- name: tool_choice
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Tool Choice
+    zh_Hans: tool choice
+  human_description:
+    en_US: Set tool choice for this operation. Enter a JSON array or object where
+      applicable.
+    zh_Hans: 控制模型调用哪个工具（如果有）。`none` 表示模型不会调用任何工具；`auto` 表示模型可在生成消息或调用一个/多个工具之间选择；`required`
+      表示模型必须调用一个或多个工具。 数组或对象请使用 JSON 格式。
+  llm_description: Set tool choice for this operation. Enter a JSON array or object
+    where applicable.
+- name: response_format
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Response Format
+    zh_Hans: response format
+  human_description:
+    en_US: Set response format for this operation. Enter a JSON array or object where
+      applicable.
+    zh_Hans: '指定模型必须输出的格式的对象。设置为 `{ "type": "json_schema", "json_schema": {...} }`
+      可启用结构化输出；设置为 `{ "type": "json_object" }` 可启用较旧的 JSON Object 模式。 数组或对象请使用 JSON
+      格式。'
+  llm_description: Set response format for this operation. Enter a JSON array or object
+    where applicable.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/grok_chat_completions.py

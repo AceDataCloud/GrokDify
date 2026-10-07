@@ -1,0 +1,86 @@
+{
+  "backend_revision": "fa94598267a82545fb1afed6ee26bafd6cbb9ca7",
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "tools": [
+    {
+      "tool": "grok_generate_video",
+      "method": "POST",
+      "path": "/grok/videos",
+      "parameters": [
+        "prompt",
+        "model",
+        "image_url",
+        "reference_image_urls",
+        "aspect_ratio",
+        "resolution",
+        "duration",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/c1c460c7-adc7-42c2-b7b0-d4bdfaa66222.json"
+    },
+    {
+      "tool": "grok_chat_completions",
+      "method": "POST",
+      "path": "/grok/chat/completions",
+      "parameters": [
+        "n",
+        "model",
+        "messages",
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed",
+        "stop",
+        "max_completion_tokens",
+        "logprobs",
+        "top_logprobs",
+        "stream_options",
+        "parallel_tool_calls",
+        "user",
+        "reasoning_effort",
+        "service_tier",
+        "store",
+        "metadata",
+        "logit_bias",
+        "modalities",
+        "audio",
+        "prediction",
+        "web_search_options",
+        "tools",
+        "tool_choice",
+        "response_format"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/aff80c74-b190-445b-9124-6422ed763c50.json"
+    },
+    {
+      "tool": "grok_task_retrieve",
+      "method": "POST",
+      "path": "/grok/tasks",
+      "parameters": [
+        "task_id",
+        "wait_seconds"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/e517b391-fdc6-4a30-a05f-eb88cb4b0a63.json"
+    },
+    {
+      "tool": "grok_tasks_retrieve_batch",
+      "method": "POST",
+      "path": "/grok/tasks",
+      "parameters": [
+        "ids"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/e517b391-fdc6-4a30-a05f-eb88cb4b0a63.json"
+    }
+  ],
+  "mcp_scope": "grok",
+  "notes": [
+    "Informational MCP model/action lists are represented by tool dropdowns and README capability tables.",
+    "GPT Image covers image-generation/editing/task capabilities of the broader OpenAI MCP; chat is supplied by ModelProviderDify."
+  ]
+}
