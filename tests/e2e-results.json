@@ -1,0 +1,69 @@
+{
+  "tested_at": "2026-10-07T06:27:26.401983+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "transport": "official remote-debug; signature verification true",
+  "browser_test_run": true,
+  "marketplace_install_tested": false,
+  "cloud_tested": false,
+  "cases": [
+    {
+      "case": "Grok Dify E2E Retry",
+      "operation": "grok_generate_video",
+      "workflow_run_id": "6930327f-cdf1-45f8-a676-166580ad657a",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "task_id": "8c139fc5-3908-464a-874b-f545445f59a5",
+      "trace_id": "98d6e559-438b-4001-823f-be55eaa3d7f5",
+      "media_urls": [
+        "https://platform2.cdn.acedata.cloud/grok/8c139fc5-3908-464a-874b-f545445f59a5.mp4"
+      ],
+      "output": [
+        {
+          "duration": 6,
+          "id": "3fc8367d-68bd-40a2-b6db-d60ebffd876b",
+          "state": "succeeded",
+          "video_url": "https://platform2.cdn.acedata.cloud/grok/8c139fc5-3908-464a-874b-f545445f59a5.mp4"
+        }
+      ],
+      "billing": {
+        "id": "87b478cd-4d9e-465d-969f-abe329953100",
+        "trace_id": "98d6e559-438b-4001-823f-be55eaa3d7f5",
+        "status_code": 200,
+        "deducted_amount": 0.567,
+        "created_at": "2026-10-07T06:12:38.662815Z"
+      },
+      "media_verification": [
+        {
+          "case": "Grok Dify E2E Retry",
+          "size": 574341,
+          "sha256": "2f10e9c2728a76a745006ecdb99ff468edef459b59f02d4a69e3fdb9897889dc",
+          "duration": "6.041667",
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 752,
+              "height": 416
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "width": null,
+              "height": null
+            },
+            {
+              "codec_name": "mjpeg",
+              "codec_type": "video",
+              "width": 752,
+              "height": 416
+            }
+          ],
+          "full_decode": true
+        }
+      ],
+      "screenshot": "evidence/grok-dify-e2e-retry.png",
+      "workflow": "evidence/grok-dify-e2e-retry-workflow.json"
+    }
+  ],
+  "scope_note": "These completed cases establish the primary plugin operation. Additional exposed operations require their own case before claiming full coverage."
+}
