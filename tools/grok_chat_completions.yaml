@@ -64,14 +64,9 @@ parameters:
     zh_Hans: 消息列表
   human_description:
     en_US: Set messages for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
     zh_Hans: 构成当前对话的消息列表。 数组或对象请使用 JSON 格式。
   llm_description: Set messages for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
+    applicable.
 - name: max_tokens
   type: number
   required: false
@@ -157,14 +152,9 @@ parameters:
     zh_Hans: stop
   human_description:
     en_US: Set stop for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
     zh_Hans: 最多 4 个序列，API 在生成到这些序列时将停止继续生成。返回的文本不包含停止序列。 数组或对象请使用 JSON 格式。
   llm_description: Set stop for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
+    applicable.
 - name: max_completion_tokens
   type: number
   required: false
@@ -211,16 +201,10 @@ parameters:
     zh_Hans: stream options
   human_description:
     en_US: Set stream options for this operation. Enter a JSON array or object where
-      applicable. Enter a JSON array or object where applicable. Enter a JSON array
-      or object where applicable. Enter a JSON array or object where applicable. Enter
-      a JSON array or object where applicable. Enter a JSON array or object where
       applicable.
     zh_Hans: '流式响应的选项。仅在设置 `stream: true` 时使用。 数组或对象请使用 JSON 格式。'
   llm_description: Set stream options for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable.
+    where applicable.
 - name: parallel_tool_calls
   type: boolean
   required: false
@@ -325,15 +309,10 @@ parameters:
     zh_Hans: metadata
   human_description:
     en_US: Set metadata for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
     zh_Hans: 可附加到对象上的一组键值对，最多 16 对。可用于以结构化格式存储对象的附加信息。键为最长 64 个字符的字符串，值为最长 512 个字符的字符串。
       数组或对象请使用 JSON 格式。
   llm_description: Set metadata for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
+    applicable.
 - name: logit_bias
   type: string
   required: false
@@ -343,16 +322,10 @@ parameters:
     zh_Hans: logit bias
   human_description:
     en_US: Set logit bias for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
     zh_Hans: 修改指定 token 在补全中出现的可能性。接受一个 JSON 对象，将 token（由其在分词器中的 token ID 指定）映射到 -100
       到 100 之间的偏置值。 数组或对象请使用 JSON 格式。
   llm_description: Set logit bias for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable.
+    where applicable.
 - name: modalities
   type: string
   required: false
@@ -362,16 +335,10 @@ parameters:
     zh_Hans: modalities
   human_description:
     en_US: Set modalities for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
     zh_Hans: 你希望模型生成的输出类型。大多数模型默认为 `["text"]`。`gpt-4o-audio-preview` 模型还可用于生成音频。若希望模型同时生成文本和音频响应，可使用
       `["text", "audio"]`。 数组或对象请使用 JSON 格式。
   llm_description: Set modalities for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable.
+    where applicable.
 - name: audio
   type: string
   required: false
@@ -381,14 +348,9 @@ parameters:
     zh_Hans: 生成音频
   human_description:
     en_US: Set audio for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
     zh_Hans: '音频输出参数。当通过 `modalities: ["audio"]` 请求音频输出时必填。 数组或对象请使用 JSON 格式。'
   llm_description: Set audio for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
+    applicable.
 - name: prediction
   type: string
   required: false
@@ -398,15 +360,9 @@ parameters:
     zh_Hans: prediction
   human_description:
     en_US: Set prediction for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
     zh_Hans: 静态预测输出内容，例如正在重新生成的文本文件的内容。当大部分响应内容已提前可知时，可用于缩短响应时间。 数组或对象请使用 JSON 格式。
   llm_description: Set prediction for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable.
+    where applicable.
 - name: web_search_options
   type: string
   required: false
@@ -416,17 +372,11 @@ parameters:
     zh_Hans: web search options
   human_description:
     en_US: Set web search options for this operation. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
       where applicable.
     zh_Hans: 网络搜索工具的选项，供带内置搜索的 GPT-4o 模型使用（`gpt-4o-search-preview`、`gpt-4o-mini-search-preview`）。
       数组或对象请使用 JSON 格式。
   llm_description: Set web search options for this operation. Enter a JSON array or
-    object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable.
+    object where applicable.
 - name: tools
   type: string
   required: false
@@ -436,14 +386,9 @@ parameters:
     zh_Hans: 辅助工具
   human_description:
     en_US: Set tools for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
     zh_Hans: 模型可调用的工具列表。目前仅支持函数（function）作为工具。 数组或对象请使用 JSON 格式。
   llm_description: Set tools for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
+    applicable.
 - name: tool_choice
   type: string
   required: false
@@ -453,17 +398,11 @@ parameters:
     zh_Hans: tool choice
   human_description:
     en_US: Set tool choice for this operation. Enter a JSON array or object where
-      applicable. Enter a JSON array or object where applicable. Enter a JSON array
-      or object where applicable. Enter a JSON array or object where applicable. Enter
-      a JSON array or object where applicable. Enter a JSON array or object where
       applicable.
     zh_Hans: 控制模型调用哪个工具（如果有）。`none` 表示模型不会调用任何工具；`auto` 表示模型可在生成消息或调用一个/多个工具之间选择；`required`
       表示模型必须调用一个或多个工具。 数组或对象请使用 JSON 格式。
   llm_description: Set tool choice for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable.
+    where applicable.
 - name: response_format
   type: string
   required: false
@@ -473,18 +412,12 @@ parameters:
     zh_Hans: response format
   human_description:
     en_US: Set response format for this operation. Enter a JSON array or object where
-      applicable. Enter a JSON array or object where applicable. Enter a JSON array
-      or object where applicable. Enter a JSON array or object where applicable. Enter
-      a JSON array or object where applicable. Enter a JSON array or object where
       applicable.
     zh_Hans: '指定模型必须输出的格式的对象。设置为 `{ "type": "json_schema", "json_schema": {...} }`
       可启用结构化输出；设置为 `{ "type": "json_object" }` 可启用较旧的 JSON Object 模式。 数组或对象请使用 JSON
       格式。'
   llm_description: Set response format for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable.
+    where applicable.
 output_schema:
   type: object
   properties:

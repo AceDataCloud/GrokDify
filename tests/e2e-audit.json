@@ -1,0 +1,105 @@
+{
+  "tested_at": "2026-10-07T08:53:39.913719+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "transport": "official remote-debug; signature verification enabled",
+  "browser_test_run": true,
+  "unit_contract_tests": "27 passed, 1 warning in 0.61s",
+  "marketplace_toolkit_passed": true,
+  "package_sha256": "f25c0d4880720579f893a690176a66612ab4b1919ab42281ee049be18543e0e6",
+  "exact_package_serverless_install_passed": true,
+  "marketplace_install_tested": false,
+  "cloud_tested": false,
+  "cases": [
+    {
+      "case": "Grok Chat Audit",
+      "tool": "grok_chat_completions",
+      "workflow_run_id": "cbc3c52c-ae17-4385-a4ef-a0d32da37528",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "",
+      "trace_id": "",
+      "media_urls": [],
+      "error": null,
+      "new_submission": true,
+      "billing": [
+        {
+          "id": "8240feb2-3fd0-493b-8a48-21ab07670332",
+          "trace_id": "f68e5cb0-3ffc-47fe-9bd4-6c4cbc846757",
+          "status_code": 200,
+          "deducted_amount": 0.0026907459020999998,
+          "created_at": "2026-10-07T08:25:06.228793Z"
+        }
+      ],
+      "billing_match": "owned credential, API and browser run window",
+      "media_verification": [],
+      "result_fields": [
+        "choices",
+        "created",
+        "id",
+        "model",
+        "object",
+        "service_tier",
+        "system_fingerprint",
+        "usage"
+      ],
+      "text": "DIFY_GROK_AUDIT_OK",
+      "token_usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 1536,
+        "total_tokens": 1613
+      },
+      "screenshot": "evidence/grok-chat-audit.png",
+      "workflow": "evidence/grok-chat-audit-workflow.json"
+    },
+    {
+      "case": "Grok Video Audit Batch",
+      "tool": "grok_tasks_retrieve_batch",
+      "workflow_run_id": "1977a333-7020-47ed-944d-95c7b9c82416",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "",
+      "trace_id": "",
+      "media_urls": [
+        "https://platform2.cdn.acedata.cloud/grok/8c139fc5-3908-464a-874b-f545445f59a5.mp4"
+      ],
+      "error": null,
+      "new_submission": false,
+      "media_verification": [
+        {
+          "case": "Grok Video Audit Batch",
+          "size": 574341,
+          "sha256": "2f10e9c2728a76a745006ecdb99ff468edef459b59f02d4a69e3fdb9897889dc",
+          "duration": "6.041667",
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 752,
+              "height": 416
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "width": null,
+              "height": null
+            },
+            {
+              "codec_name": "mjpeg",
+              "codec_type": "video",
+              "width": 752,
+              "height": 416
+            }
+          ],
+          "full_decode": true
+        }
+      ],
+      "result_fields": [
+        "items"
+      ],
+      "screenshot": "evidence/grok-video-audit-batch.png",
+      "workflow": "evidence/grok-video-audit-batch-workflow.json"
+    }
+  ],
+  "primary_blocked": false,
+  "scope_note": "Recorded cases only. Batch regressions reuse earlier paid successful tasks; those media generations are not billed or claimed as new. New paid calls have separate usage reconciliation. Optional untested models/actions are not claimed as passed; original failures and their corrections are preserved."
+}

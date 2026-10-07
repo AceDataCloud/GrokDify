@@ -84,17 +84,11 @@ parameters:
   human_description:
     en_US: Optional reference images to guide the style/content (array, JSON array
       string, or one per line). Enter a JSON array. Enter a JSON array or object where
-      applicable. Enter a JSON array or object where applicable. Enter a JSON array
-      or object where applicable. Enter a JSON array or object where applicable. Enter
-      a JSON array or object where applicable. Enter a JSON array or object where
       applicable.
     zh_Hans: 可选的参考图像 URL 数组，用于引导生成视频的风格或内容。 数组或对象请使用 JSON 格式。
   llm_description: Optional reference images to guide the style/content (array, JSON
     array string, or one per line). Enter a JSON array. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable.
+    where applicable.
 - name: aspect_ratio
   type: select
   required: false
