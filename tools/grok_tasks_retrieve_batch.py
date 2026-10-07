@@ -9,10 +9,10 @@ from dify_plugin.entities.tool import ToolInvokeMessage
 from tools.acedata_client import AceDataGrokClient
 
 
-class GrokTaskRetrieveTool(Tool):
+class GrokTasksRetrieveBatchTool(Tool):
     def _invoke(self, tool_parameters: dict[str, Any]) -> Generator[ToolInvokeMessage, None, None]:
         result = AceDataGrokClient(self.runtime.credentials.get("acedata_bearer_token", "")).invoke(
-            "grok_task_retrieve", tool_parameters
+            "grok_tasks_retrieve_batch", tool_parameters
         )
         yield self.create_json_message(result)
         for name, value in result.items():

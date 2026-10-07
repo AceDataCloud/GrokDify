@@ -9,8 +9,8 @@ identity:
   description:
     en_US: Use the Ace Data Cloud Grok Video APIs in Dify workflows.
     zh_Hans: 在 Dify 工作流中使用 Ace Data Cloud Grok Video API。
-  icon: icon.jpg
-  icon_dark: icon.jpg
+  icon: icon.png
+  icon_dark: icon.png
   tags:
   - videos
 credentials_for_provider:
@@ -29,7 +29,9 @@ credentials_for_provider:
     url: https://platform.acedata.cloud/console/credentials
 tools:
 - tools/grok_generate.yaml
+- tools/grok_chat_completions.yaml
 - tools/grok_task_retrieve.yaml
+- tools/grok_tasks_retrieve_batch.yaml
 extra:
   python:
     source: provider/grok.py

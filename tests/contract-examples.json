@@ -1,0 +1,56 @@
+[
+  {
+    "name": "grok_generate_video-1",
+    "tool": "grok_generate_video",
+    "inputs": {
+      "prompt": "Test",
+      "reference_image_urls": "[\"https://example.org/reference.png\"]"
+    },
+    "method": "POST",
+    "path": "/grok/videos",
+    "body": {
+      "reference_image_urls": [
+        "https://example.org/reference.png"
+      ]
+    }
+  },
+  {
+    "name": "grok_chat_completions-2",
+    "tool": "grok_chat_completions",
+    "inputs": {
+      "model": "grok-4.7",
+      "messages": "[{\"role\":\"user\",\"content\":\"Hello\"}]",
+      "response_format": "{\"type\":\"json_object\"}"
+    },
+    "method": "POST",
+    "path": "/grok/chat/completions",
+    "body": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hello"
+        }
+      ],
+      "response_format": {
+        "type": "json_object"
+      },
+      "stream": false
+    }
+  },
+  {
+    "name": "grok_tasks_retrieve_batch-3",
+    "tool": "grok_tasks_retrieve_batch",
+    "inputs": {
+      "ids": "[\"owned-task\"]"
+    },
+    "method": "POST",
+    "path": "/grok/tasks",
+    "body": {
+      "action": "retrieve_batch",
+      "ids": [
+        "owned-task"
+      ]
+    },
+    "read_only": true
+  }
+]

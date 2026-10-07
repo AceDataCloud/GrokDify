@@ -1,0 +1,121 @@
+{
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "mapping": [
+    {
+      "mcp_tool": "grok_chat_completions",
+      "dify_tools": [
+        "grok_chat_completions"
+      ],
+      "parameters": {
+        "messages": "messages",
+        "model": "model",
+        "temperature": "temperature",
+        "max_tokens": "max_tokens",
+        "top_p": "top_p",
+        "stream": "Dify submit/poll output: async=true, stream=false",
+        "stop": "stop",
+        "frequency_penalty": "frequency_penalty",
+        "presence_penalty": "presence_penalty",
+        "seed": "seed",
+        "response_format": "response_format",
+        "reasoning_effort": "reasoning_effort",
+        "tools": "tools",
+        "tool_choice": "tool_choice",
+        "user": "user",
+        "service_tier": "service_tier",
+        "n": "n",
+        "max_completion_tokens": "max_completion_tokens",
+        "logprobs": "logprobs",
+        "top_logprobs": "top_logprobs",
+        "stream_options": "stream_options",
+        "parallel_tool_calls": "parallel_tool_calls",
+        "store": "store",
+        "metadata": "metadata",
+        "logit_bias": "logit_bias",
+        "modalities": "modalities",
+        "audio": "audio",
+        "prediction": "prediction",
+        "web_search_options": "web_search_options"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "grok_list_models",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "grok_list_actions",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "grok_get_prompt_guide",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "grok_get_task",
+      "dify_tools": [
+        "grok_task_retrieve"
+      ],
+      "parameters": {
+        "task_id": "task_id"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve"
+    },
+    {
+      "mcp_tool": "grok_get_tasks_batch",
+      "dify_tools": [
+        "grok_tasks_retrieve_batch"
+      ],
+      "parameters": {
+        "task_ids": "ids"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve_batch"
+    },
+    {
+      "mcp_tool": "grok_text_to_video",
+      "dify_tools": [
+        "grok_generate_video"
+      ],
+      "parameters": {
+        "prompt": "prompt",
+        "model": "model",
+        "aspect_ratio": "aspect_ratio",
+        "resolution": "resolution",
+        "duration": "duration",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "grok_image_to_video",
+      "dify_tools": [
+        "grok_generate_video"
+      ],
+      "parameters": {
+        "image_url": "image_url",
+        "prompt": "prompt",
+        "model": "model",
+        "reference_image_urls": "reference_image_urls",
+        "aspect_ratio": "aspect_ratio",
+        "resolution": "resolution",
+        "duration": "duration",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": ""
+    }
+  ]
+}

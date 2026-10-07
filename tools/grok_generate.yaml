@@ -9,35 +9,38 @@ description:
     en_US: Generate videos with Ace Data Cloud Grok Imagine Videos API (text-to-video
       or image-to-video).
     zh_Hans: 通过 Ace Data Cloud Grok Imagine Videos API 生成视频（文生视频或图生视频）。
-  llm: Generate a video from a text prompt and/or an input image via Ace Data Cloud
-    Grok Imagine Videos API. Generation returns a task ID. Query the same task until
-    complete; never resubmit a pending generation.
+  llm: Generate videos with Ace Data Cloud Grok Imagine Videos API (text-to-video
+    or image-to-video). For asynchronous results, preserve task_id and use the task
+    retrieval tool until completion. A successful submission is not completed output.
 parameters:
 - name: prompt
   type: string
   required: false
+  form: llm
   label:
     en_US: Prompt
     zh_Hans: 提示词
   human_description:
     en_US: Text description. Required for text-to-video; optional when an image_url
       is provided.
-    zh_Hans: 文本提示词。文生视频必填；提供 image_url 时可选。
+    zh_Hans: 描述所要生成视频内容的文本提示词。使用 `grok-imagine-video-1.5-fast` 进行文本生成视频时必填；提供 `image_url`
+      时可选。
   llm_description: Text description. Required for text-to-video; optional when an
     image_url is provided.
-  form: llm
 - name: model
   type: select
   required: false
+  form: form
   label:
     en_US: Model
     zh_Hans: 模型
   human_description:
-    en_US: Select the current API model for this operation.
+    en_US: Select a model currently supported by this API. Availability and pricing
+      depend on the chosen model.
     zh_Hans: 用于生成视频的模型。`grok-imagine-video-1.5-fast` 支持文本生成视频和图像生成视频，时长最长 30 秒；`grok-imagine-video-1.5`
       仅支持图像生成视频，必须提供 `image_url`，时长最长 15 秒。
-  llm_description: Select the current API model for this operation.
-  form: form
+  llm_description: Select a model currently supported by this API. Availability and
+    pricing depend on the chosen model.
   default: grok-imagine-video-1.5-fast:reverse
   options:
   - value: grok-imagine-video-1.5-fast:reverse
@@ -63,38 +66,46 @@ parameters:
 - name: image_url
   type: string
   required: false
+  form: form
   label:
     en_US: Image URL
     zh_Hans: 图片链接
   human_description:
     en_US: Input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.
-    zh_Hans: 用于图生视频的输入图片链接。grok-imagine-video-1.5-preview 必填。
+    zh_Hans: 用于图像生成视频的输入图像 URL。当 `model` 为 `grok-imagine-video-1.5` 时必填。
   llm_description: Input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.
-  form: form
 - name: reference_image_urls
   type: string
   required: false
+  form: form
   label:
     en_US: Reference Image URLs
     zh_Hans: 参考图片链接
   human_description:
     en_US: Optional reference images to guide the style/content (array, JSON array
-      string, or one per line). Enter a JSON array.
-    zh_Hans: 可选参考图片，用于引导风格/内容（数组、JSON 数组字符串或每行一个）。 请填写 JSON 数组。
+      string, or one per line). Enter a JSON array. Enter a JSON array or object where
+      applicable. Enter a JSON array or object where applicable. Enter a JSON array
+      or object where applicable. Enter a JSON array or object where applicable. Enter
+      a JSON array or object where applicable. Enter a JSON array or object where
+      applicable.
+    zh_Hans: 可选的参考图像 URL 数组，用于引导生成视频的风格或内容。 数组或对象请使用 JSON 格式。
   llm_description: Optional reference images to guide the style/content (array, JSON
-    array string, or one per line). Enter a JSON array.
-  form: form
+    array string, or one per line). Enter a JSON array. Enter a JSON array or object
+    where applicable. Enter a JSON array or object where applicable. Enter a JSON
+    array or object where applicable. Enter a JSON array or object where applicable.
+    Enter a JSON array or object where applicable. Enter a JSON array or object where
+    applicable.
 - name: aspect_ratio
   type: select
   required: false
+  form: form
   label:
     en_US: Aspect ratio
     zh_Hans: 画面比例
   human_description:
     en_US: Optional output aspect ratio.
-    zh_Hans: 可选输出画面比例。
+    zh_Hans: 生成视频的宽高比。
   llm_description: Optional output aspect ratio.
-  form: form
   options:
   - value: '1:1'
     label:
@@ -127,14 +138,15 @@ parameters:
 - name: resolution
   type: select
   required: false
+  form: form
   label:
     en_US: Resolution
     zh_Hans: 分辨率
   human_description:
-    en_US: Optional output resolution. Default 480p.
-    zh_Hans: 可选输出分辨率，默认 480p。
-  llm_description: Optional output resolution. Default 480p.
-  form: form
+    en_US: Set resolution; supported combinations are described by the current API.
+    zh_Hans: 生成视频的输出分辨率，可选 `480p`、`720p`、`1080p`。
+  llm_description: Set resolution; supported combinations are described by the current
+    API.
   default: 480p
   options:
   - value: 480p
@@ -152,17 +164,31 @@ parameters:
 - name: duration
   type: number
   required: false
+  form: form
   label:
     en_US: Duration (seconds)
     zh_Hans: 时长（秒）
   human_description:
-    en_US: Optional video duration in seconds (1-15, default 8). Billed per output
-      second.
-    zh_Hans: 可选视频时长（秒），范围 1-15，默认 8。按输出秒数计费。
-  llm_description: Optional video duration in seconds (1-15, default 8). Billed per
-    output second.
-  form: form
+    en_US: Set duration (seconds); supported combinations are described by the current
+      API.
+    zh_Hans: 生成视频的时长，单位为秒。`grok-imagine-video-1.5-fast` 取值范围 1–30，`grok-imagine-video-1.5`
+      取值范围 1–15，未指定时默认 6。推荐使用 6 秒或 10 秒，这两个标准时长相对稳定；其他时长的稳定性相对较低。
+  llm_description: Set duration (seconds); supported combinations are described by
+    the current API.
   default: 6
+  min: 1
+  max: 30
+- name: callback_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 回调 URL，视频生成完成后将携带结果调用该地址。提供此参数后，请求将立即返回 `task_id`，结果以异步方式投递。
+  llm_description: Set callback url for this operation.
 output_schema:
   type: object
   properties:
