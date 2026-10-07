@@ -1,0 +1,266 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "custom",
+      "data": {
+        "type": "start",
+        "title": "Start",
+        "desc": "",
+        "variables": [],
+        "selected": false
+      },
+      "position": {
+        "x": 0,
+        "y": 100
+      },
+      "width": 242,
+      "height": 73,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 0,
+        "y": 100
+      }
+    },
+    {
+      "id": "generate",
+      "type": "custom",
+      "data": {
+        "type": "tool",
+        "title": "Grok Video",
+        "desc": "",
+        "provider_id": "acedatacloud/grok/grok",
+        "provider_name": "acedatacloud/grok/grok",
+        "provider_type": "builtin",
+        "tool_name": "grok_generate_video",
+        "tool_label": "Grok Generate Video",
+        "tool_configurations": {
+          "model": {
+            "type": "constant",
+            "value": "grok-imagine-video-1.5-fast:reverse"
+          },
+          "resolution": {
+            "type": "constant",
+            "value": "480p"
+          },
+          "duration": {
+            "type": "constant",
+            "value": 6
+          }
+        },
+        "tool_parameters": {
+          "prompt": {
+            "type": "constant",
+            "value": "A teal cube slowly rotates on a cream tabletop, studio lighting, no text."
+          }
+        },
+        "tool_node_version": "2",
+        "plugin_unique_identifier": "acedatacloud/grok:0.0.1@54a22916f8c3b72482cf8902a49aaf6eefaf4eede5ae12a1934c820d8a3608d2",
+        "retry_config": {
+          "retry_enabled": false,
+          "max_retries": 0,
+          "retry_interval": 1000
+        },
+        "selected": false
+      },
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "width": 242,
+      "height": 140,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "wait",
+      "type": "custom",
+      "data": {
+        "type": "tool",
+        "title": "Retrieve completed task",
+        "desc": "",
+        "provider_id": "acedatacloud/grok/grok",
+        "provider_name": "acedatacloud/grok/grok",
+        "provider_type": "builtin",
+        "tool_name": "grok_task_retrieve",
+        "tool_label": "Grok Video Retrieve Task",
+        "tool_configurations": {
+          "wait_seconds": {
+            "type": "constant",
+            "value": 240
+          }
+        },
+        "tool_parameters": {
+          "task_id": {
+            "type": "variable",
+            "value": [
+              "generate",
+              "task_id"
+            ]
+          }
+        },
+        "tool_node_version": "2",
+        "plugin_unique_identifier": "acedatacloud/grok:0.0.1@54a22916f8c3b72482cf8902a49aaf6eefaf4eede5ae12a1934c820d8a3608d2",
+        "retry_config": {
+          "retry_enabled": false,
+          "max_retries": 0,
+          "retry_interval": 1000
+        },
+        "selected": false
+      },
+      "position": {
+        "x": 600,
+        "y": 100
+      },
+      "width": 242,
+      "height": 88,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 600,
+        "y": 100
+      }
+    },
+    {
+      "id": "end",
+      "type": "custom",
+      "data": {
+        "type": "end",
+        "title": "Output",
+        "desc": "",
+        "outputs": [
+          {
+            "variable": "status",
+            "value_selector": [
+              "wait",
+              "status"
+            ]
+          },
+          {
+            "variable": "success",
+            "value_selector": [
+              "wait",
+              "success"
+            ]
+          },
+          {
+            "variable": "task_id",
+            "value_selector": [
+              "wait",
+              "task_id"
+            ]
+          },
+          {
+            "variable": "trace_id",
+            "value_selector": [
+              "wait",
+              "trace_id"
+            ]
+          },
+          {
+            "variable": "media_urls",
+            "value_selector": [
+              "wait",
+              "media_urls"
+            ]
+          },
+          {
+            "variable": "data",
+            "value_selector": [
+              "wait",
+              "data"
+            ]
+          },
+          {
+            "variable": "result",
+            "value_selector": [
+              "wait",
+              "result"
+            ]
+          },
+          {
+            "variable": "files",
+            "value_selector": [
+              "wait",
+              "files"
+            ]
+          }
+        ],
+        "selected": false
+      },
+      "position": {
+        "x": 900,
+        "y": 100
+      },
+      "width": 242,
+      "height": 270,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 900,
+        "y": 100
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "start-generate",
+      "source": "start",
+      "target": "generate",
+      "sourceHandle": "source",
+      "targetHandle": "target",
+      "type": "custom",
+      "data": {
+        "sourceType": "start",
+        "targetType": "tool",
+        "isInIteration": false,
+        "isInLoop": false
+      },
+      "zIndex": 0
+    },
+    {
+      "id": "generate-wait",
+      "source": "generate",
+      "target": "wait",
+      "sourceHandle": "source",
+      "targetHandle": "target",
+      "type": "custom",
+      "data": {
+        "sourceType": "tool",
+        "targetType": "tool",
+        "isInIteration": false,
+        "isInLoop": false
+      },
+      "zIndex": 0
+    },
+    {
+      "id": "wait-end",
+      "source": "wait",
+      "target": "end",
+      "sourceHandle": "source",
+      "targetHandle": "target",
+      "type": "custom",
+      "data": {
+        "sourceType": "tool",
+        "targetType": "end",
+        "isInIteration": false,
+        "isInLoop": false
+      },
+      "zIndex": 0
+    }
+  ],
+  "viewport": {
+    "x": 60,
+    "y": 160,
+    "zoom": 0.8
+  }
+}
