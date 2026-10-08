@@ -6,12 +6,7 @@ app:
   mode: workflow
   name: Grok Video Step-by-step Tutorial
   use_icon_as_answer_icon: false
-dependencies:
-- current_identifier: null
-  type: marketplace
-  value:
-    marketplace_plugin_unique_identifier: acedatacloud/grok:0.0.1@319ae9f9c8546fad1060775447f897d71676a3a0a3b512ee3f18e057993e881f
-    version: null
+dependencies: []
 kind: app
 version: 0.7.0
 workflow:
@@ -86,7 +81,6 @@ workflow:
       zIndex: 0
     - data:
         desc: ''
-        plugin_unique_identifier: acedatacloud/grok:0.0.1@319ae9f9c8546fad1060775447f897d71676a3a0a3b512ee3f18e057993e881f
         provider_id: acedatacloud/grok/grok
         provider_name: acedatacloud/grok/grok
         provider_type: builtin
@@ -131,7 +125,6 @@ workflow:
       zIndex: 0
     - data:
         desc: ''
-        plugin_unique_identifier: acedatacloud/grok:0.0.1@319ae9f9c8546fad1060775447f897d71676a3a0a3b512ee3f18e057993e881f
         provider_id: acedatacloud/grok/grok
         provider_name: acedatacloud/grok/grok
         provider_type: builtin
