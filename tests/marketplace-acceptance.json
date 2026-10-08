@@ -1,0 +1,31 @@
+{
+  "repo": "GrokDify",
+  "marketplace_url": "https://marketplace.dify.ai/plugin/acedatacloud/grok",
+  "identifier": "acedatacloud/grok:0.0.1@319ae9f9c8546fad1060775447f897d71676a3a0a3b512ee3f18e057993e881f",
+  "installation_source": "marketplace",
+  "workflow_id": "2301256a-c809-44b6-ac0d-96a245cb73e0",
+  "workflow_status": "succeeded",
+  "service_status": "succeeded",
+  "case": "Grok Video Marketplace Installed",
+  "media_urls": [
+    "https://platform2.cdn.acedata.cloud/grok/8c139fc5-3908-464a-874b-f545445f59a5.mp4"
+  ],
+  "outputs": {
+    "status": "succeeded",
+    "success": true,
+    "task_id": "",
+    "trace_id": ""
+  },
+  "icon_matches_source": true,
+  "paid_generation_reused": true,
+  "prior_media_decode_evidence": true,
+  "media_readback_status": "completed existing task output; generation not repeated",
+  "tested_at": "2026-10-08T01:26:57.567309+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "signature_verification_enabled": true,
+  "remote_debug_used": false,
+  "marketplace_install_tested": true,
+  "cloud_tested": false,
+  "screenshot": "evidence/marketplace-20261008.png",
+  "workflow": "evidence/marketplace-20261008-workflow.json"
+}
