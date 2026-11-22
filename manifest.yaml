@@ -12,6 +12,8 @@ description:
   zh_Hans: 通过 Ace Data Cloud 使用 Grok 视频与对话 API。
 icon: icon.png
 icon_dark: icon.png
+tags:
+  - videos
 resource:
   memory: 268435456
   permission:
